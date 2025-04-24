@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tailwind base layer override */
+@layer base {
+  a {
+    @apply text-veryLightGray;
+  }
+}
+
+/* Font family utility classes */
+.font-arial {
+  font-family: Arial, sans-serif;
+}
+
+/* Global styles */
+:root {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Background (light mode only) */
+  color: #213547;
+  background-color: #ffffff;
+}
+
+/* Body and layout resets */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #111827; /* text-gray-900 */
+  background-color: #f3f4f6; /* bg-gray-100 */
+  font-family: Arial, sans-serif;
+}
+
+/* Headings with Arial too */
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, sans-serif;
+  font-weight: 700; /* Bold weight for headings */
+}
+
+/* Scrollbar - consistent light mode styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #6b7280; /* gray-500 */
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4b5563; /* gray-600 */
+}
+/* Firefox support */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 #ffffff;
+}
+
+/* Scrollbar hiding class */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
