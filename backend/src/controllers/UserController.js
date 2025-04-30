@@ -1,6 +1,8 @@
 const userModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 const mailUtil = require("../utils/MailUtil");
+const { welcomeEmail } = require("../../Email/Templates");
+const SendEmail = require("../../Email/SendEmail");
 const loginUser = async (req, res) => {
   try {
     // const { email, password } = req.body;
@@ -55,12 +57,18 @@ const signup = async (req, res) => {
     req.body.password = hashedPassword;
 
     const createdUser = await userModel.create(req.body);
-    await mailUtil.sendingMail(
-      createdUser.email,
-      "Welcome to UrbanConnect",
-      "You have signed up successfully!"
-    );
+    // await mailUtil.sendingMail(
+    //   createdUser.email,
+    //   "Welcome to UrbanConnect",
+    //   "You have signed up successfully!"
+    // );
     console.log("User created successfully:", createdUser);
+    const res1=await SendEmail(
+      createdUser.email,
+      "Welcome Mail to local service",
+      welcomeEmail(createdUser.name)
+    );
+    console.log("Mail send successfully",res1)
     return res.status(201).json({
       message: "User created successfully",
       data: createdUser,
